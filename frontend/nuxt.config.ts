@@ -8,10 +8,17 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxtjs/supabase",
     "nitro-cloudflare-dev",
+    "@vueuse/nuxt",
   ],
   devServer: {
     port: 5173,
   },
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false,
+    },
+  ],
   supabase: {
     redirect: false,
   },
