@@ -1,0 +1,9 @@
+services:
+  api:
+    container_name: fastapi
+    build:
+      context: .
+      dockerfile: ./docker/dev.dockerfile
+    extends:
+      file: base.docker-compose.yml
+      service: api

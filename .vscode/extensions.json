@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    // WebDev
+    "Vue.volar",
+    "ms-vscode.vscode-typescript-next",
+    "YoavBls.pretty-ts-errors",
+    "christian-kohler.npm-intellisense",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+
+    // Python
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "charliermarsh.ruff",
+
+    // CI/CD and env
+    "ms-azuretools.vscode-docker",
+    "IronGeek.vscode-env",
+    "redhat.vscode-yaml",
+
+    // Other
+    "christian-kohler.path-intellisense"
+  ]
+}
