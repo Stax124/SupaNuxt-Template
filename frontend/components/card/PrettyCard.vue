@@ -1,6 +1,6 @@
 <template>
   <div class="p-[1px] rounded-xl relative overflow-hidden bg-gray/10">
-    <div class="p-5 rounded-xl dark:bg-gray-900/95 bg-gray-100/95">
+    <div class="p-5 rounded-xl dark:bg-gray-900/90 bg-gray-100/90">
       <h2 class="text-xl font-bold dark:text-zinc-50 text-gray-600">
         {{ props.title || "Title" }}
       </h2>
