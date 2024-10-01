@@ -17,30 +17,39 @@ import type { HorizontalNavigationLink } from "#ui/types";
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
-const items = computed<HorizontalNavigationLink[][]>(() => [
-  [
-    {
-      label: "Profile",
-      icon: "carbon:user",
-      to: "/profile",
-    },
-  ],
-  user.value
-    ? [
-        {
-          label: "Logout",
-          icon: "carbon:logout",
-          click: signOut,
-        },
-      ]
-    : [
-        {
-          label: "Login",
-          icon: "carbon:login",
-          to: "/login",
-        },
-      ],
-]);
+const items = computed<HorizontalNavigationLink[][]>(() => {
+  const data: HorizontalNavigationLink[][] = [];
+
+  if (user.value) {
+    data.push([
+      {
+        label: "Profile",
+        icon: "carbon:user",
+        to: "/profile",
+      },
+    ]);
+  }
+
+  if (user.value) {
+    data.push([
+      {
+        label: "Logout",
+        icon: "carbon:logout",
+        click: signOut,
+      },
+    ]);
+  } else {
+    data.push([
+      {
+        label: "Login",
+        icon: "carbon:login",
+        to: "/login",
+      },
+    ]);
+  }
+
+  return data;
+});
 
 const label = computed(() => user.value?.email || "Account");
 

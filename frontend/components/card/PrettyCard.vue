@@ -5,10 +5,7 @@
         {{ props.title || "Title" }}
       </h2>
       <p class="mt-2 text-sm text-gray-700 dark:text-gray-400">
-        {{
-          props.description ||
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        }}
+        <slot></slot>
       </p>
     </div>
     <div
@@ -25,7 +22,6 @@
 <script setup lang="ts">
 interface PrettyCardProps {
   title?: string;
-  description?: string;
 }
 
 const props = defineProps<PrettyCardProps>();
