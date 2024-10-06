@@ -3,3 +3,9 @@
     <h1>Checkout</h1>
   </div>
 </template>
+
+<script setup lang="ts">
+useSeoMeta({
+  title: "Checkout",
+});
+</script>

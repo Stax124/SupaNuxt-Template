@@ -1,12 +1,14 @@
 <template>
   <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-    <UButton
-      color="white"
-      :label="label"
-      icon="carbon:user"
-      trailing-icon="carbon:chevron-down"
-      variant="ghost"
-    >
+    <UButton color="white" trailing-icon="carbon:chevron-down" variant="ghost">
+      <template #leading>
+        <UAvatar
+          v-if="user?.user_metadata.avatar_url"
+          :src="user?.user_metadata.avatar_url"
+          size="xs"
+        />
+        <UAvatar v-else size="xs" icon="carbon:user" />
+      </template>
     </UButton>
   </UDropdown>
 </template>
@@ -50,8 +52,6 @@ const items = computed<HorizontalNavigationLink[][]>(() => {
 
   return data;
 });
-
-const label = computed(() => user.value?.email || "Account");
 
 async function signOut() {
   try {

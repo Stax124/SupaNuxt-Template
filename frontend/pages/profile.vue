@@ -14,13 +14,18 @@
 <script setup lang="ts">
 import type { HorizontalNavigationLink } from "#ui/types";
 
+useSeoMeta({
+  title: "Profile",
+});
+
 const route = useRoute();
+const user = useSupabaseUser();
 
 const links = computed<HorizontalNavigationLink[]>(() => [
   {
-    label: "Name",
+    label: "Profile",
     avatar: {
-      src: "https://avatars.githubusercontent.com/u/739984?v=4",
+      src: user.value?.user_metadata.avatar_url,
     },
     to: "/profile",
     active: route.fullPath === "/profile",

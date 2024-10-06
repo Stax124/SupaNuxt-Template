@@ -1,6 +1,12 @@
 <template>
-  <div class="p-[1px] rounded-xl relative overflow-hidden bg-gray/10">
-    <div class="p-5 rounded-xl dark:bg-gray-900/90 bg-gray-100/90">
+  <div class="p-[1px] rounded-xl relative overflow-hidden bg-gray-50/10">
+    <div class="p-5 rounded-xl dark:bg-gray-900 bg-gray-100/90 h-full">
+      <UIcon
+        v-if="props.icon"
+        :name="props.icon"
+        :size="48"
+        class="mb-3 mt-2 text-primary"
+      />
       <h2 class="text-xl font-bold dark:text-zinc-50 text-gray-600">
         {{ props.title || "Title" }}
       </h2>
@@ -22,6 +28,7 @@
 <script setup lang="ts">
 interface PrettyCardProps {
   title?: string;
+  icon?: string;
 }
 
 const props = defineProps<PrettyCardProps>();
@@ -41,7 +48,6 @@ useEventListener("mousemove", (ev) => {
       },
     ],
     {
-      duration: 100,
       fill: "forwards",
     }
   );

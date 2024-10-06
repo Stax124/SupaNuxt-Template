@@ -1,7 +1,7 @@
 <template>
   <UContainer class="mt-12">
     <!-- Tailwind based custom hero -->
-    <div class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="py-24 px-4 sm:px-6 lg:px-8">
       <!-- Big Icon -->
       <div
         v-if="slots['icon']"
@@ -11,10 +11,10 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <h1 class="text-3xl font-bold text-center text-primary">
+        <h1 class="text-5xl font-bold text-center text-primary">
           {{ props.title || "Hero title" }}
         </h1>
-        <p class="mt-4 text-lg dark:text-gray-200 text-gray-700">
+        <p class="mt-4 text-xl dark:text-gray-200 text-gray-700">
           {{ props.description || "Hero description" }}
         </p>
       </div>

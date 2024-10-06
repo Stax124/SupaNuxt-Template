@@ -1,5 +1,5 @@
 <template>
-  <UPopover mode="hover" :popper="{ strategy: 'absolute' }">
+  <UPopover :popper="{ placement: 'top-end' }">
     <template #default="{ open }">
       <UButton
         color="gray"
@@ -48,14 +48,14 @@
           <UButton
             :variant="colorMode.value === 'dark' ? 'solid' : 'ghost'"
             icon="carbon:moon"
-            @click="colorMode.value = 'dark'"
+            @click="colorMode.preference = colorMode.value = 'dark'"
           >
             Dark
           </UButton>
           <UButton
             :variant="colorMode.value === 'light' ? 'solid' : 'ghost'"
             icon="carbon:sun"
-            @click="colorMode.value = 'light'"
+            @click="colorMode.preference = colorMode.value = 'light'"
           >
             Light
           </UButton>

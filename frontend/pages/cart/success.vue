@@ -7,3 +7,9 @@
     </UCard>
   </UContainer>
 </template>
+
+<script setup lang="ts">
+useSeoMeta({
+  title: "Order Success",
+});
+</script>

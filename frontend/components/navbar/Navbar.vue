@@ -1,6 +1,6 @@
 <template>
   <div
-    class="navbar desktop-navbar inline-flex justify-between w-full py-1 pr-1 pl-4"
+    class="navbar desktop-navbar inline-flex justify-between w-full py-2 pr-1 pl-4"
   >
     <div class="navbar-left">
       <ULink to="/" class="flex items-center space-x-2">

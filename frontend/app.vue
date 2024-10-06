@@ -1,7 +1,7 @@
 <template>
   <NuxtLoadingIndicator />
 
-  <DesktopNavbar title="Nuxt Template" />
+  <Navbar title="Nuxt Template" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -10,3 +10,13 @@
   <UModals />
   <USlideovers />
 </template>
+
+<style>
+html.dark {
+  background-color: rgb(var(--color-gray-900));
+}
+
+html.light {
+  background-color: rgb(var(--color-gray-100));
+}
+</style>
