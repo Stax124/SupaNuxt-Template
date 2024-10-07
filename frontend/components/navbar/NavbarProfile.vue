@@ -2,12 +2,18 @@
   <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
     <UButton color="white" trailing-icon="carbon:chevron-down" variant="ghost">
       <template #leading>
-        <UAvatar
-          v-if="user?.user_metadata.avatar_url"
-          :src="user?.user_metadata.avatar_url"
-          size="xs"
-        />
-        <UAvatar v-else size="xs" icon="carbon:user" />
+        <ClientOnly>
+          <UAvatar
+            v-if="user?.user_metadata.avatar_url"
+            :src="user?.user_metadata.avatar_url"
+            size="xs"
+          />
+          <UAvatar v-else size="xs" icon="carbon:user" />
+
+          <template #fallback>
+            <UAvatar size="xs" icon="carbon:user" />
+          </template>
+        </ClientOnly>
       </template>
     </UButton>
   </UDropdown>
@@ -25,7 +31,7 @@ const items = computed<HorizontalNavigationLink[][]>(() => {
   if (user.value) {
     data.push([
       {
-        label: "Profile",
+        label: user.value.user_metadata.name || "Mr. Unknown",
         icon: "carbon:user",
         to: "/profile",
       },

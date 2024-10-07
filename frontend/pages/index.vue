@@ -1,5 +1,5 @@
 <template>
-  <UContainer class="mt-12">
+  <UContainer class="mt-12 mb-32 max-w-4xl">
     <PageHero
       title="Nuxt 3 + Supabase Starter"
       description="Nuxt 3 · Supabase · Cloudflare Pages · Tailwind"

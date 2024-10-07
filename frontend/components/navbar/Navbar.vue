@@ -2,14 +2,19 @@
   <div
     class="navbar desktop-navbar inline-flex justify-between w-full py-2 pr-1 pl-4"
   >
-    <div class="navbar-left">
+    <div class="navbar-left flex">
       <ULink to="/" class="flex items-center space-x-2">
         <h1 class="text-2xl font-bold text-primary">
           {{ props.title || "Replace me" }}
         </h1>
       </ULink>
     </div>
-    <div class="navbar-right inline-flex">
+    <div class="navbar-center">
+      <UHorizontalNavigation :links="links" />
+    </div>
+    <div
+      class="navbar-right flex flex-row align-middle items-center justify-center"
+    >
       <ColorPicker />
       <NavbarProfile />
     </div>
@@ -20,4 +25,23 @@
 const props = defineProps<{
   title?: string;
 }>();
+
+const links = [
+  {
+    label: "Home",
+    to: "/",
+    icon: "carbon:home",
+  },
+  {
+    label: "Documentation",
+    to: "",
+    icon: "carbon:book",
+  },
+  {
+    label: "GitHub",
+    icon: "carbon:logo-github",
+    to: "https://github.com/Stax124/SupaNuxt-Template",
+    target: "_blank",
+  },
+];
 </script>

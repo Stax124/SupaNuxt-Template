@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "build": "nuxt build --dotenv .env.prod",
+    "dev": "nuxt dev --dotenv .env.dev",
+    "generate": "nuxt generate --dotenv .env.prod",
     "postinstall": "nuxt prepare",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --dotenv .env.dev",
     "cf:preview": "pnpm run build && wrangler pages dev",
     "cf:deploy": "pnpm run build && wrangler pages deploy"
   },
