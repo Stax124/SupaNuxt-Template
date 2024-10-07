@@ -1,6 +1,6 @@
 <template>
   <UContainer class="mt-12">
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-4 gap-4">
       <div class="col-span-1">
         <UVerticalNavigation :links="links" />
       </div>
