@@ -5,14 +5,14 @@
       description="Nuxt 3 · Supabase · Cloudflare Pages · Tailwind"
     />
     <div class="grid grid-cols-2 gap-2">
-      <PrettyCard icon="carbon:user" title="Color Palette">
-        Choose a primary and a gray color from your Tailwind CSS color palette.
-      </PrettyCard>
       <PrettyCard title="SSR Out of the box" icon="carbon:code-block">
         Fully compatible with Nuxt 3's server-side rendering.
       </PrettyCard>
       <PrettyCard title="Supabase Auth" icon="carbon:password">
         Easy to use authetication with Supabase. Self-hosting available.
+      </PrettyCard>
+      <PrettyCard title="Color Palette" icon="carbon:color-palette">
+        Choose a primary and a gray color from your Tailwind CSS color palette.
       </PrettyCard>
       <PrettyCard title="Icons" icon="carbon:carbon">
         100k+ icons that can be used. Lazily imported.
@@ -31,5 +31,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "SupaNuxt Template",
+  description: "Nuxt 3 · Supabase · Cloudflare Pages · Tailwind",
+  author: "Stax124",
 });
 </script>
