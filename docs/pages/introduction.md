@@ -1,0 +1,3 @@
+# SupaNuxt Template
+
+WIP

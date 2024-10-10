@@ -7,11 +7,12 @@ hero:
   text: "Nuxt3 made easy"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Introduction
+      link: /pages/introduction
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Demo
+      link: https://supanuxt-template.stax124.com/
+      target: _blank
 
 features:
   - title: SSR Out of the box
