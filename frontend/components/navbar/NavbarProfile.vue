@@ -1,12 +1,18 @@
 <template>
   <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-    <UButton color="white" trailing-icon="carbon:chevron-down" variant="ghost">
+    <UButton
+      color="white"
+      trailing-icon="carbon:chevron-down"
+      variant="ghost"
+      aria-label="Profile"
+    >
       <template #leading>
         <ClientOnly>
           <UAvatar
             v-if="user?.user_metadata.avatar_url"
             :src="user?.user_metadata.avatar_url"
             size="xs"
+            aria-label="User avatar"
           />
           <UAvatar v-else size="xs" icon="carbon:user" />
 
