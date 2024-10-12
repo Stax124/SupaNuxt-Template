@@ -4,14 +4,13 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "SupaNuxt Template",
   description: "Nuxt3 + Supabase + NuxtUI + Cloudflare Pages",
-  base: "/SupaNuxt-Template/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
       {
         text: "Demo",
-        link: "https://supanuxt-template.stax124.com/",
+        link: "https://supanuxt.stax124.com/",
         target: "_blank",
       },
     ],

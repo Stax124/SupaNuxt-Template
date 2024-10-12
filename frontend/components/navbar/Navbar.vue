@@ -34,7 +34,7 @@ const links = [
   },
   {
     label: "Documentation",
-    to: "https://stax124.github.io/SupaNuxt-Template/",
+    to: "https://supanuxt-template-docs.pages.dev/",
     icon: "carbon:book",
     target: "_blank",
   },
