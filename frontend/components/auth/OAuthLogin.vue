@@ -1,5 +1,5 @@
 <template>
-  <div class="oauth-login-container grid grid-cols-2 gap-2">
+  <div class="oauth-login-container grid grid-cols-1 gap-2">
     <!-- OAuth -->
     <UButton
       :loading="loading"
@@ -10,7 +10,7 @@
     >
       Log in with Google
     </UButton>
-    <UButton
+    <!-- <UButton
       :loading="loading"
       :disabled="loading"
       icon="mdi:github"
@@ -18,7 +18,7 @@
       @click="() => oauthLogin('github')"
     >
       Log in with GitHub
-    </UButton>
+    </UButton> -->
   </div>
 </template>
 
@@ -34,6 +34,12 @@ const oauthLogin = async (provider: AuthProvider) => {
     loading.value = true;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: provider,
+      options: {
+        queryParams: {
+          prompt: "select_account", // Forces the user to select an account
+        },
+        redirectTo: window.location.origin,
+      },
     });
     if (error) throw error;
   } catch (error) {
