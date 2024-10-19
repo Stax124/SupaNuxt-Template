@@ -1,28 +1,50 @@
 <template>
-  <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
+  <UDropdown
+    v-if="isLargeScreen"
+    :items="items"
+    :popper="{ placement: 'bottom-start' }"
+  >
     <UButton
       color="white"
       trailing-icon="carbon:chevron-down"
       variant="ghost"
       aria-label="Profile"
     >
-      <template #leading>
-        <ClientOnly>
-          <UAvatar
-            v-if="user?.user_metadata.avatar_url"
-            :src="user?.user_metadata.avatar_url"
-            size="xs"
-            aria-label="User avatar"
-          />
-          <UAvatar v-else size="xs" icon="carbon:user" />
+      <template #trailing>
+        <UIcon
+          name="carbon:chevron-down"
+          class="dark:bg-gray-200 bg-gray-600"
+        />
+      </template>
 
-          <template #fallback>
-            <UAvatar size="xs" icon="carbon:user" />
-          </template>
-        </ClientOnly>
+      <template #leading>
+        <div v-if="isLargeScreen">
+          <ClientOnly>
+            <UAvatar
+              v-if="user?.user_metadata.avatar_url"
+              :src="user?.user_metadata.avatar_url"
+              size="xs"
+              aria-label="User avatar"
+            />
+            <UAvatar v-else size="xs" icon="carbon:user" />
+
+            <template #fallback>
+              <UAvatar size="xs" icon="carbon:user" />
+            </template>
+          </ClientOnly>
+        </div>
       </template>
     </UButton>
   </UDropdown>
+  <UButton
+    v-else
+    aria-label="Profile"
+    block
+    icon="carbon:user"
+    @click="navigateToLogin"
+  >
+    Log in
+  </UButton>
 </template>
 
 <script setup lang="ts">
@@ -30,6 +52,8 @@ import type { HorizontalNavigationLink } from "#ui/types";
 
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
+const isLargeScreen = useMediaQuery("(min-width: 768px)");
+const router = useRouter();
 
 const items = computed<HorizontalNavigationLink[][]>(() => {
   const data: HorizontalNavigationLink[][] = [];
@@ -74,5 +98,9 @@ async function signOut() {
     // @ts-expect-error - alert is a browser API
     alert(error.message);
   }
+}
+
+function navigateToLogin() {
+  router.push("/login");
 }
 </script>

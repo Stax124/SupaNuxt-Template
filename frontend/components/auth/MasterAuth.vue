@@ -9,6 +9,8 @@
       </template>
     </UTabs>
 
+    <UDivider label="OR" class="my-4" />
+
     <OAuthLogin />
   </UContainer>
 </template>

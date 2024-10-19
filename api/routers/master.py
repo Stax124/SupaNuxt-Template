@@ -4,5 +4,5 @@ router = APIRouter()
 
 
 @router.get("/")
-def read_root():
+def index():
     return {"Hello": "World"}

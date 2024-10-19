@@ -1,17 +1,27 @@
 <template>
-  <UPopover :popper="{ placement: 'top-end' }">
-    <template #default="{ open }">
+  <UPopover :popper="{ placement: isLargeScreen ? 'top-end' : undefined }">
+    <template #default>
       <UButton
+        v-if="isLargeScreen"
         color="gray"
         variant="ghost"
         square
-        :class="[open && 'bg-gray-50 dark:bg-gray-800']"
         aria-label="Color picker"
       >
         <UIcon
           name="i-heroicons-swatch-20-solid"
           class="w-5 h-5 text-primary-500 dark:text-primary-400"
         />
+      </UButton>
+      <UButton v-else color="gray" square block aria-label="Color picker">
+        <template #leading>
+          <UIcon
+            name="i-heroicons-swatch-20-solid"
+            class="w-5 h-5 text-primary-500 dark:text-primary-400"
+          />
+        </template>
+
+        Change theme
       </UButton>
     </template>
 
@@ -70,6 +80,7 @@ import colors from "#tailwind-config/theme/colors";
 
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
+const isLargeScreen = useMediaQuery("(min-width: 768px)");
 
 const primaryColors = computed(() =>
   appConfig.ui.colors

@@ -1,7 +1,7 @@
 <template>
   <NuxtLoadingIndicator />
 
-  <Navbar title="Nuxt Template" />
+  <Navbar title="SupaNuxt" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

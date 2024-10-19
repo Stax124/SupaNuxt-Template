@@ -1,0 +1,7 @@
+# Env files
+/.env*
+
+# Docker files
+Dockerfile
+prod.docker-compose.yml
+docker-compose.yml

@@ -9,24 +9,31 @@
         </h1>
       </ULink>
     </div>
-    <div class="navbar-center">
+    <div v-if="isLargeScreen" class="navbar-center">
       <UHorizontalNavigation :links="links" />
     </div>
     <div
+      v-if="isLargeScreen"
       class="navbar-right flex flex-row align-middle items-center justify-center"
     >
       <ColorPicker />
       <NavbarProfile />
     </div>
+    <NavbarMobile v-else :title="props.title" :links="links" />
   </div>
 </template>
 
 <script setup lang="ts">
+import type {
+  HorizontalNavigationLink,
+  VerticalNavigationLink,
+} from "#ui/types";
+
 const props = defineProps<{
   title?: string;
 }>();
 
-const links = [
+const links: VerticalNavigationLink[] | HorizontalNavigationLink[] = [
   {
     label: "Home",
     to: "/",
@@ -45,4 +52,6 @@ const links = [
     target: "_blank",
   },
 ];
+
+const isLargeScreen = useMediaQuery("(min-width: 768px)");
 </script>

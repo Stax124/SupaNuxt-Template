@@ -23,6 +23,40 @@ export default defineConfig({
             text: "Introduction",
             link: "/pages/introduction",
           },
+          {
+            text: "Installation",
+            link: "/pages/installation",
+          },
+        ],
+        collapsed: false,
+      },
+      {
+        text: "Frontend",
+        items: [
+          {
+            text: "Introduction",
+            link: "/pages/frontend/frontend",
+          },
+        ],
+        collapsed: false,
+      },
+      {
+        text: "Backend",
+        items: [
+          {
+            text: "Introduction",
+            link: "/pages/backend/backend",
+          },
+        ],
+        collapsed: false,
+      },
+      {
+        text: "Supabase",
+        items: [
+          {
+            text: "Introduction",
+            link: "/pages/supabase/supabase",
+          },
         ],
         collapsed: false,
       },
