@@ -41,10 +41,16 @@
     aria-label="Profile"
     block
     icon="carbon:user"
-    @click="navigateToLogin"
+    @click="mobileButtonClicked"
   >
-    Log in
+    {{ user ? "Profile" : "Log in" }}
   </UButton>
+
+  <NavbarProfileModal
+    v-model="modalVisible"
+    :links="items"
+    :title="props.title"
+  />
 </template>
 
 <script setup lang="ts">
@@ -54,6 +60,12 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 const isLargeScreen = useMediaQuery("(min-width: 768px)");
 const router = useRouter();
+
+const props = defineProps<{
+  title?: string;
+}>();
+
+const modalVisible = ref(false);
 
 const items = computed<HorizontalNavigationLink[][]>(() => {
   const data: HorizontalNavigationLink[][] = [];
@@ -100,7 +112,11 @@ async function signOut() {
   }
 }
 
-function navigateToLogin() {
-  router.push("/login");
+function mobileButtonClicked() {
+  if (user.value) {
+    modalVisible.value = true;
+  } else {
+    router.push("/login");
+  }
 }
 </script>
