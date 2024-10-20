@@ -13,23 +13,23 @@
   },
   "dependencies": {
     "@nuxt/eslint": "^0.5.7",
-    "@nuxt/ui": "^2.18.6",
-    "nuxt": "^3.13.0",
+    "@nuxt/ui": "^2.18.7",
+    "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.2.1",
+    "@iconify-json/carbon": "^1.2.3",
     "@iconify-json/heroicons": "^1.2.1",
-    "@iconify-json/mdi": "^1.2.0",
-    "@nuxtjs/supabase": "^1.4.0",
+    "@iconify-json/mdi": "^1.2.1",
+    "@nuxtjs/supabase": "^1.4.1",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "nitro-cloudflare-dev": "^0.1.6",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "vue-tsc": "^2.1.6",
-    "wrangler": "^3.78.12"
+    "wrangler": "^3.81.0"
   },
   "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
 }
