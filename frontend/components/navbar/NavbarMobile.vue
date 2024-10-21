@@ -38,9 +38,25 @@
       <UVerticalNavigation :links="props.links" />
 
       <template #footer>
-        <div class="grid grid-cols-2 gap-2">
-          <ColorPicker />
-          <NavbarProfile />
+        <div class="flex flex-col gap-1">
+          <UButton
+            aria-label="Quick search"
+            block
+            icon="carbon:search"
+            variant="outline"
+            @click="
+              () => {
+                showMenu = false;
+                $dispatch('command:open-search');
+              }
+            "
+            >Quick Search</UButton
+          >
+
+          <div class="grid grid-cols-2 gap-2">
+            <ColorPicker />
+            <NavbarProfile />
+          </div>
         </div>
       </template>
     </UCard>
@@ -50,6 +66,8 @@
 <script setup lang="ts">
 import type { VerticalNavigationLink } from "#ui/types";
 import { ref } from "vue";
+
+const { $dispatch } = useNuxtApp();
 const route = useRoute();
 
 const props = defineProps<{

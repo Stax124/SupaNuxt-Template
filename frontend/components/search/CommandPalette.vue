@@ -16,6 +16,7 @@ const router = useRouter();
 
 const commandPaletteRef = ref();
 const modelVisible = ref(false);
+const { $listen } = useNuxtApp();
 
 interface CommandEntry extends Command {
   label: string;
@@ -64,5 +65,10 @@ defineShortcuts({
     modelVisible.value = true;
     commandPaletteRef.value?.focus();
   },
+});
+
+$listen("command:open-search", () => {
+  modelVisible.value = true;
+  commandPaletteRef.value?.focus();
 });
 </script>
