@@ -1,6 +1,6 @@
 <template>
   <UDropdown
-    v-if="isLargeScreen"
+    v-if="device.isDesktop"
     :items="items"
     :popper="{ placement: 'bottom-start' }"
   >
@@ -18,7 +18,7 @@
       </template>
 
       <template #leading>
-        <div v-if="isLargeScreen">
+        <div v-if="device.isDesktop">
           <ClientOnly>
             <UAvatar
               v-if="user?.user_metadata.avatar_url"
@@ -58,7 +58,7 @@ import type { HorizontalNavigationLink } from "#ui/types";
 
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
-const isLargeScreen = useMediaQuery("(min-width: 768px)");
+const device = useDevice();
 const router = useRouter();
 
 const props = defineProps<{

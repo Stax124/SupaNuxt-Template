@@ -9,11 +9,11 @@
         </h1>
       </ULink>
     </div>
-    <div v-if="isLargeScreen" class="navbar-center">
+    <div v-if="device.isDesktop" class="navbar-center">
       <UHorizontalNavigation :links="links" />
     </div>
     <div
-      v-if="isLargeScreen"
+      v-if="device.isDesktop"
       class="navbar-right flex flex-row align-middle items-center justify-center"
     >
       <ColorPicker />
@@ -32,6 +32,8 @@ import type {
 const props = defineProps<{
   title?: string;
 }>();
+
+const device = useDevice();
 
 const links: VerticalNavigationLink[] | HorizontalNavigationLink[] = [
   {
@@ -52,6 +54,4 @@ const links: VerticalNavigationLink[] | HorizontalNavigationLink[] = [
     target: "_blank",
   },
 ];
-
-const isLargeScreen = useMediaQuery("(min-width: 768px)");
 </script>

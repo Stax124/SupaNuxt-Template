@@ -1,8 +1,8 @@
 <template>
-  <UPopover :popper="{ placement: isLargeScreen ? 'top-end' : undefined }">
+  <UPopover :popper="{ placement: device.isDesktop ? 'top-end' : undefined }">
     <template #default>
       <UButton
-        v-if="isLargeScreen"
+        v-if="device.isDesktop"
         color="gray"
         variant="ghost"
         square
@@ -80,7 +80,7 @@ import colors from "#tailwind-config/theme/colors";
 
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
-const isLargeScreen = useMediaQuery("(min-width: 768px)");
+const device = useDevice();
 
 const primaryColors = computed(() =>
   appConfig.ui.colors
