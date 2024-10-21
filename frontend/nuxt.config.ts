@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "nitro-cloudflare-dev",
     "@vueuse/nuxt",
+    "@nuxtjs/device",
   ],
   devServer: {
     port: 5173,
