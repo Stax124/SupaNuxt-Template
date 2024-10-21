@@ -9,6 +9,8 @@
   <UNotifications />
   <UModals />
   <USlideovers />
+
+  <CommandPalette />
 </template>
 
 <script setup lang="ts">
