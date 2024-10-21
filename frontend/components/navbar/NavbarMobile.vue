@@ -38,7 +38,7 @@
       <UVerticalNavigation :links="props.links" />
 
       <template #footer>
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-2">
           <UButton
             aria-label="Quick search"
             block
