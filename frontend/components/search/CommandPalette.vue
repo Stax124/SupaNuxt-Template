@@ -1,5 +1,11 @@
 <template>
-  <UModal v-model="modelVisible">
+  <UModal
+    v-model="modelVisible"
+    :ui="{
+      container:
+        'flex min-h-full items-start sm:items-center justify-center text-center',
+    }"
+  >
     <UCommandPalette
       ref="commandPaletteRef"
       :groups="groups"
@@ -69,6 +75,5 @@ defineShortcuts({
 
 $listen("command:open-search", () => {
   modelVisible.value = true;
-  commandPaletteRef.value?.focus();
 });
 </script>

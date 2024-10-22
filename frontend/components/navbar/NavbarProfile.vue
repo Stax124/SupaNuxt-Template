@@ -1,6 +1,6 @@
 <template>
   <UDropdown
-    v-if="device.isDesktop"
+    class="hidden md:flex"
     :items="items"
     :popper="{ placement: 'bottom-start' }"
   >
@@ -18,26 +18,24 @@
       </template>
 
       <template #leading>
-        <div v-if="device.isDesktop">
-          <ClientOnly>
-            <UAvatar
-              v-if="user?.user_metadata.avatar_url"
-              :src="user?.user_metadata.avatar_url"
-              size="xs"
-              aria-label="User avatar"
-            />
-            <UAvatar v-else size="xs" icon="carbon:user" />
+        <ClientOnly>
+          <UAvatar
+            v-if="user?.user_metadata.avatar_url"
+            :src="user?.user_metadata.avatar_url"
+            size="xs"
+            aria-label="User avatar"
+          />
+          <UAvatar v-else size="xs" icon="carbon:user" />
 
-            <template #fallback>
-              <UAvatar size="xs" icon="carbon:user" />
-            </template>
-          </ClientOnly>
-        </div>
+          <template #fallback>
+            <UAvatar size="xs" icon="carbon:user" />
+          </template>
+        </ClientOnly>
       </template>
     </UButton>
   </UDropdown>
   <UButton
-    v-else
+    class="md:hidden"
     aria-label="Profile"
     block
     icon="carbon:user"
@@ -58,7 +56,6 @@ import type { HorizontalNavigationLink } from "#ui/types";
 
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
-const device = useDevice();
 const router = useRouter();
 
 const props = defineProps<{

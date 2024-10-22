@@ -14,7 +14,7 @@
         <h1 class="text-5xl font-bold text-center text-primary">
           {{ props.title || "Hero title" }}
         </h1>
-        <p class="mt-4 text-xl dark:text-gray-200 text-gray-700">
+        <p class="mt-4 text-xl dark:text-gray-200 text-gray-700 text-center">
           {{ props.description || "Hero description" }}
         </p>
       </div>

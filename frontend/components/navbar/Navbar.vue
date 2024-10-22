@@ -9,17 +9,16 @@
         </h1>
       </ULink>
     </div>
-    <div v-if="device.isDesktop" class="navbar-center">
+    <div class="navbar-center hidden md:block">
       <UHorizontalNavigation :links="links" />
     </div>
     <div
-      v-if="device.isDesktop"
-      class="navbar-right flex flex-row align-middle items-center justify-center"
+      class="navbar-right flex-row align-middle items-center justify-center hidden md:flex"
     >
       <ColorPicker />
       <NavbarProfile />
     </div>
-    <NavbarMobile v-else :title="props.title" :links="links" />
+    <NavbarMobile class="md:hidden" :title="props.title" :links="links" />
   </div>
 </template>
 
@@ -32,8 +31,6 @@ import type {
 const props = defineProps<{
   title?: string;
 }>();
-
-const device = useDevice();
 
 const links: VerticalNavigationLink[] | HorizontalNavigationLink[] = [
   {

@@ -1,8 +1,8 @@
 <template>
-  <UPopover :popper="{ placement: device.isDesktop ? 'top-end' : undefined }">
+  <UPopover :popper="{ placement: 'auto' }">
     <template #default>
       <UButton
-        v-if="device.isDesktop"
+        class="hidden md:flex"
         color="gray"
         variant="ghost"
         square
@@ -13,7 +13,13 @@
           class="w-5 h-5 text-primary-500 dark:text-primary-400"
         />
       </UButton>
-      <UButton v-else color="gray" square block aria-label="Color picker">
+      <UButton
+        class="md:hidden"
+        color="gray"
+        square
+        block
+        aria-label="Color picker"
+      >
         <template #leading>
           <UIcon
             name="i-heroicons-swatch-20-solid"
@@ -80,7 +86,6 @@ import colors from "#tailwind-config/theme/colors";
 
 const appConfig = useAppConfig();
 const colorMode = useColorMode();
-const device = useDevice();
 
 const primaryColors = computed(() =>
   appConfig.ui.colors
