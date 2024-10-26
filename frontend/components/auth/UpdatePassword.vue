@@ -4,13 +4,9 @@
       :schema="schema"
       :state="state"
       class="space-y-4"
-      @submit="onEmailLogin"
+      @submit="onUpdatePassword"
     >
-      <UFormGroup label="Email" name="email" required>
-        <UInput v-model="state.email" />
-      </UFormGroup>
-
-      <UFormGroup label="Password" name="password" required>
+      <UFormGroup label="New Password" name="password" required>
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
 
@@ -18,8 +14,8 @@
         <UInput v-model="state.repeatPassword" type="password" />
       </UFormGroup>
 
-      <UButton type="submit" :loading="loading" icon="carbon:login" block>
-        Sign Up
+      <UButton type="submit" :loading="loading" icon="carbon:password" block>
+        Update Password
       </UButton>
     </UForm>
   </div>
@@ -30,8 +26,6 @@ import type { FormSubmitEvent } from "#ui/types";
 import { z } from "zod";
 import { zodPassword } from "./types";
 
-export type AuthProvider = "google" | "github" | "gitlab";
-
 const supabase = useSupabaseClient();
 const toast = useToast();
 
@@ -39,7 +33,6 @@ const loading = ref(false);
 
 const schema = z
   .object({
-    email: z.string().email("Invalid email"),
     password: zodPassword,
     repeatPassword: z.string(),
   })
@@ -51,19 +44,22 @@ const schema = z
 type Schema = z.output<typeof schema>;
 
 const state = reactive({
-  email: undefined,
   password: undefined,
   repeatPassword: undefined,
 });
 
-async function onEmailLogin(event: FormSubmitEvent<Schema>) {
+async function onUpdatePassword(event: FormSubmitEvent<Schema>) {
   try {
     loading.value = true;
-    const { error } = await supabase.auth.signUp({
-      email: event.data.email,
+    const { error } = await supabase.auth.updateUser({
       password: event.data.password,
     });
     if (error) throw error;
+    toast.add({
+      title: "Success",
+      description: "Password updated",
+      icon: "carbon:checkmark",
+    });
   } catch (error) {
     toast.add({
       title: "Error",

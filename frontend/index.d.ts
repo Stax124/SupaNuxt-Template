@@ -2,6 +2,7 @@
 
 type ApplicationEvents = {
   "command:open-search": undefined;
+  "command:logout": undefined;
 };
 
 declare module "#app" {

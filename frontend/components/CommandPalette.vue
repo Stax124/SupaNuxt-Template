@@ -8,55 +8,37 @@
   >
     <UCommandPalette
       ref="commandPaletteRef"
-      :groups="groups"
+      :groups="commandGroups"
       :autoselect="false"
+      :fuse="{
+        fuseOptions: {
+          shouldSort: true,
+          threshold: 0.4,
+        },
+      }"
       @update:model-value="onSelect"
     />
   </UModal>
 </template>
 
 <script setup lang="ts">
-import type { Command, Group } from "#ui/types";
+import type { CommandEntry } from "~/composables/commandPalette/commands/types";
 
 const router = useRouter();
+const { commandGroups } = useCommandGroups();
 
 const commandPaletteRef = ref();
 const modelVisible = ref(false);
 const { $listen } = useNuxtApp();
 
-interface CommandEntry extends Command {
-  label: string;
-  to?: string;
-}
-
-const groups = computed<Group[]>(() => [
-  {
-    key: "points-of-interest",
-    commands: [
-      {
-        id: "home",
-        label: "Home",
-        icon: "carbon:home",
-        to: "/",
-      },
-      {
-        id: "login",
-        label: "Login",
-        icon: "carbon:user",
-        to: "/login",
-      },
-    ] as CommandEntry[],
-    filter: (query: string, commands: CommandEntry[]) => {
-      return commands.filter((command) =>
-        command.label.toLowerCase().startsWith(query.toLowerCase())
-      );
-    },
-  },
-]);
-
-function onSelect(option: CommandEntry) {
+async function onSelect(option: CommandEntry) {
   if (option.to) {
     router.push(option.to);
+  } else if (option.click) {
+    // Handle both sync and async click handlers
+    Promise.resolve(option.click()).catch((e) => {
+      console.error(e);
+    });
   }
 
   modelVisible.value = false;
@@ -68,6 +50,10 @@ defineShortcuts({
     commandPaletteRef.value?.focus();
   },
   "/": () => {
+    modelVisible.value = true;
+    commandPaletteRef.value?.focus();
+  },
+  ctrl_p: () => {
     modelVisible.value = true;
     commandPaletteRef.value?.focus();
   },

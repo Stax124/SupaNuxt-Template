@@ -57,6 +57,7 @@ import type { HorizontalNavigationLink } from "#ui/types";
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 const router = useRouter();
+const { $listen } = useNuxtApp();
 
 const props = defineProps<{
   title?: string;
@@ -90,7 +91,7 @@ const items = computed<HorizontalNavigationLink[][]>(() => {
       {
         label: "Login",
         icon: "carbon:login",
-        to: "/login",
+        to: "/auth/login",
       },
     ]);
   }
@@ -113,7 +114,9 @@ function mobileButtonClicked() {
   if (user.value) {
     modalVisible.value = true;
   } else {
-    router.push("/login");
+    router.push("/auth/login");
   }
 }
+
+$listen("command:logout", signOut);
 </script>
