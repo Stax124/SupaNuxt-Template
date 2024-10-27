@@ -8,9 +8,9 @@ name: supabase
 
 services:
   studio:
+    container_name: supabase-studio
     profiles:
       - studio
-    container_name: supabase-studio
     image: supabase/studio:20240729-ce42139
     restart: unless-stopped
     healthcheck:
@@ -188,6 +188,8 @@ services:
       db:
         # Disable this if you are using an external Postgres database
         condition: service_healthy
+      # meta:
+      #   condition: service_started
       # analytics:
       #   condition: service_healthy
     healthcheck:
@@ -284,23 +286,25 @@ services:
   #   volumes:
   #     - ./volumes/storage:/var/lib/storage:z
 
-  # meta:
-  #   container_name: supabase-meta
-  #   image: supabase/postgres-meta:v0.83.2
-  #   depends_on:
-  #     db:
-  #       # Disable this if you are using an external Postgres database
-  #       condition: service_healthy
-  #     analytics:
-  #       condition: service_healthy
-  #   restart: unless-stopped
-  #   environment:
-  #     PG_META_PORT: 8080
-  #     PG_META_DB_HOST: ${POSTGRES_HOST}
-  #     PG_META_DB_PORT: ${POSTGRES_PORT}
-  #     PG_META_DB_NAME: ${POSTGRES_DB}
-  #     PG_META_DB_USER: supabase_admin
-  #     PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
+  meta:
+    container_name: supabase-meta
+    profiles:
+      - studio
+    image: supabase/postgres-meta:v0.83.2
+    depends_on:
+      db:
+        # Disable this if you are using an external Postgres database
+        condition: service_healthy
+      # analytics:
+      #   condition: service_healthy
+    restart: unless-stopped
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: ${POSTGRES_HOST}
+      PG_META_DB_PORT: ${POSTGRES_PORT}
+      PG_META_DB_NAME: ${POSTGRES_DB}
+      PG_META_DB_USER: supabase_admin
+      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
 
   # functions:
   #   container_name: supabase-edge-functions
