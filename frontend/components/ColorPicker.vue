@@ -1,5 +1,5 @@
 <template>
-  <UPopover :popper="{ placement: 'auto' }">
+  <UPopover :popper="{ placement: 'auto-start' }">
     <template #default>
       <UButton
         class="hidden md:flex"
