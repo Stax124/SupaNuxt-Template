@@ -1,15 +1,56 @@
 <template>
-  <UTable :rows="invoiceData" :columns="columns">
-    <template #actions-data="{ row }">
-      <UDropdown :items="items(row)">
-        <UButton
-          color="gray"
-          variant="ghost"
-          icon="i-heroicons-ellipsis-horizontal-20-solid"
-        />
-      </UDropdown>
+  <UCard>
+    <template #header>
+      <h2 class="text-xl font-semibold">Invoices</h2>
     </template>
-  </UTable>
+
+    <!-- Outstanding -->
+    <UCard class="mt-4">
+      <template #header>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Outstanding</h3>
+          <UButton color="primary" icon="carbon:purchase">Pay Now</UButton>
+        </div>
+      </template>
+
+      <UTable
+        :rows="invoiceData.filter((row) => row.status === 'Outstanding')"
+        :columns="columns"
+      >
+        <template #actions-data="{ row }">
+          <UDropdown :items="items(row)">
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-ellipsis-horizontal-20-solid"
+            />
+          </UDropdown>
+        </template>
+      </UTable>
+    </UCard>
+
+    <!-- Paid -->
+    <UCard class="mt-4">
+      <template #header>
+        <h3 class="text-lg font-semibold">Paid</h3>
+      </template>
+
+      <UTable
+        :rows="invoiceData.filter((row) => row.status === 'Paid')"
+        :columns="columns"
+      >
+        <template #actions-data="{ row }">
+          <UDropdown :items="items(row)">
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-ellipsis-horizontal-20-solid"
+            />
+          </UDropdown>
+        </template>
+      </UTable>
+    </UCard>
+  </UCard>
 </template>
 
 <script setup lang="ts">

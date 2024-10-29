@@ -1,7 +1,7 @@
 <template>
-  <UContainer class="mt-12">
-    <div class="grid grid-cols-4 gap-4">
-      <div class="col-span-1">
+  <UContainer class="mt-8">
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="md:col-span-1 col-span-3">
         <UVerticalNavigation :links="links" />
       </div>
       <div class="col-span-3">
